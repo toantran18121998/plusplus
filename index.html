@@ -257,7 +257,9 @@
         </button>
       </div>
       <div class="modal-body">
-        ..
+        <div class="content">
+
+        </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary " data-dismiss="modal">Close</button>
@@ -2139,14 +2141,23 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
             url: "http://api.plusplus.vn/api/v1/quiz/find",
             contentType: 'application/json; charset=UTF-8',
             data: JSON.stringify({
-                "course":"java",
-                "language":"java",
-                "level":"beginer"
+                "course": "",
+                  "language": "java",
+                  "level": "new"
             }),
 
 
             success: function(data) {
                 console.log(data);
+                var str = "";
+                data.questions.forEach(element => {
+                    str += "<p>"+element.question+"</p>";
+                    str += "<button value='"+element.option1+"'>"+element.option1+"</button>";
+                    str += "<button value='"+element.option2+"'>"+element.option2+"</button>";
+                    str += "<button value='"+element.option3+"'>"+element.option3+"</button>";
+                    str += "<button value='"+element.option4+"'>"+element.option4+"</button>";
+                });
+                $(".content").html(str);
             }
         })
     })
