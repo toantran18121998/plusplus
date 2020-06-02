@@ -26,8 +26,88 @@
     <link rel="stylesheet" href="css/animate.css">
     <link rel="stylesheet" href="css/slicknav.css">
     <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
     <!-- <link rel="stylesheet" href="css/responsive.css"> -->
 </head>
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #f1f1f1;
+}
+
+#regForm {
+  background-color: #ffffff;
+  margin: 100px auto;
+  font-family: Raleway;
+  padding: 40px;
+  width: 70%;
+  min-width: 300px;
+}
+
+h1 {
+  text-align: center;  
+}
+
+input {
+  padding: 10px;
+  width: 100%;
+  font-size: 17px;
+  font-family: Raleway;
+  border: 1px solid #aaaaaa;
+}
+
+/* Mark input boxes that gets an error on validation: */
+input.invalid {
+  background-color: #ffdddd;
+}
+
+/* Hide all steps by default: */
+.tab {
+  display: none;
+}
+
+button {
+  background-color: #4CAF50;
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 17px;
+  font-family: Raleway;
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+#prevBtn {
+  background-color: #bbbbbb;
+}
+
+/* Make circles that indicate the steps of the form: */
+.step {
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbbbbb;
+  border: none;  
+  border-radius: 50%;
+  display: inline-block;
+  opacity: 0.5;
+}
+
+.step.active {
+  opacity: 1;
+}
+
+/* Mark the steps that are finished and valid: */
+.step.finish {
+  background-color: #4CAF50;
+}
+</style>
 
 <body>
     <!--[if lte IE 9]>
@@ -43,7 +123,7 @@
                         <div class="col-xl-2 col-lg-2">
                             <div class="logo-img">
                                 <a href="index.html">
-                                    <img src="img/logo.png" alt="">
+                                    <img src="img/logo-web.png" alt="">
                                 </a>
                             </div>
                         </div>
@@ -51,8 +131,8 @@
                             <div class="main-menu  d-none d-lg-block">
                                 <nav>
                                     <ul id="navigation">
-                                        <li><a class="active" href="index.html">home</a></li>
-                                        <li><a href="Courses.html">Courses</a></li>
+                                        <li><a class="active" href="index.html">Trang chủ</a></li>
+                                        <li><a href="https://plusplus.vn/">Khóa học</a></li>
                                         <li><a href="#">pages <i class="ti-angle-down"></i></a>
                                             <ul class="submenu">
                                                 <li><a href="course_details.html">course details</a></li>
@@ -73,10 +153,10 @@
                         </div>
                         <div class="col-xl-3 col-lg-3 d-none d-lg-block">
                             <div class="log_chat_area d-flex align-items-center">
-                                <a href="#test-form" class="login popup-with-form">
+                                <!-- <a href="#test-form" class="login popup-with-form">
                                     <i class="flaticon-user"></i>
                                     <span>log in</span>
-                                </a>
+                                </a> -->
                                 <div class="live_chat_btn">
                                     <a class="boxed_btn_orange" href="#">
                                         <i class="fa fa-phone"></i>
@@ -107,10 +187,10 @@
                     </div>
                     <div class="col-xl-6 col-md-6">
                         <div class="slider_info">
-                            <h3>Learn your <br>
-                                Favorite Course <br>
-                                From Online</h3>
-                            <a href="#" class="boxed_btn">Browse Our Courses</a>
+                            <h3>Học lập trình <br>
+                                Cùng các chuyên gia <br>
+                                tại Plusplus Academy</h3>
+                            <a href="https://plusplus.vn/" class="boxed_btn">Các khóa học</a>
                         </div>
                     </div>
                 </div>
@@ -242,8 +322,8 @@
                                             </div>
                                             <div class="courses_info">
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary button_test" data-toggle="modal" data-target="#exampleModal">
-  Launch demo modal
+<button type="button" class="btn btn-primary " data-toggle="modal" data-target="#exampleModal" id="buttontest">
+  Test
 </button>
 
 <!-- Modal -->
@@ -251,7 +331,37 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+       <!--  <h5 class="modal-title" id="exampleModalLabel">Modal title</h5> -->
+  <!--sửa -->
+                    <form id="regForm" action="/action_page.php">
+                      <h1>Chọn test</h1>
+                      <!-- One "tab" for each step in the form: -->
+                      <div class="tab">Name:
+                       <select name="level" id="level">
+                          <option value="new">new</option>
+                          <option value="saab">Saab</option>
+                          <option value="mercedes">Mercedes</option>
+                        </select>
+
+                      </div>
+                      <div id="questions">
+                      
+                        </div>
+                      <div style="overflow:auto;">
+                        <div style="float:right;">
+                          <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
+                          <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
+                        </div>
+                      </div>
+                      <!-- Circles which indicates the steps of the form: -->
+                      <div style="text-align:center;margin-top:40px;">
+                        <span class="step"></span>
+                        <span class="step"></span>
+                        <span class="step"></span>
+                        <span class="step"></span>
+                      </div>
+                    </form>
+                   <!--  sửa -->
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -2134,32 +2244,75 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
     <script src="js/mail-script.js"></script>
 
     <script src="js/main.js"></script>
+   <!--  sửa -->
+   <script>
+
+    let currentTab = 0; // Current tab is set to be the first tab (0)
+
+
+    function showTab(n) {
+  // This function will display the specified tab of the form...
+  var x = document.getElementsByClassName("tab");
+  x[n].style.display = "block";
+  //... and fix the Previous/Next buttons:
+  if (n == 0) {
+    document.getElementById("prevBtn").style.display = "none";
+  } else {
+    document.getElementById("prevBtn").style.display = "inline";
+  }
+  if (n == (x.length - 1)) {
+    document.getElementById("nextBtn").innerHTML = "Submit";
+  } else {
+    document.getElementById("nextBtn").innerHTML = "Next";
+  }
+}
+
+function nextPrev(n) {
+  // This function will figure out which tab to display
+  var x = document.getElementsByClassName("tab");
+  // Hide the current tab:
+  x[currentTab].style.display = "none";
+  // Increase or decrease the current tab by 1:
+  currentTab = currentTab + n;
+  // if you have reached the end of the form...
+  if (currentTab >= x.length) {
+    // ... the form gets submitted:
+    document.getElementById("regForm").submit();
+    return false;
+  }
+  // Otherwise, display the correct tab:
+  showTab(currentTab);
+}
+
+</script>
+   <!--  sửa -->
     <script type="text/javascript">
-        $(document).on('click','.button_test',function(){
-        $.ajax({
-            type: "POST",
-            url: "http://api.plusplus.vn/api/v1/quiz/find",
-            contentType: 'application/json; charset=UTF-8',
-            data: JSON.stringify({
-                "course": "",
+        $(document).on('click','#buttontest',function(){
+
+            $.ajax({
+                type: "POST",
+                url: "http://api.plusplus.vn/api/v1/quiz/find",
+                contentType: 'application/json; charset=UTF-8',
+                data: JSON.stringify({
+                  "course": "",
                   "language": "java",
-                  "level": "new"
-            }),
-
-
-            success: function(data) {
-                console.log(data);
-                var str = "";
-                data.questions.forEach(element => {
-                    str += "<p>"+element.question+"</p>";
-                    str += "<button value='"+element.option1+"'>"+element.option1+"</button>";
-                    str += "<button value='"+element.option2+"'>"+element.option2+"</button>";
-                    str += "<button value='"+element.option3+"'>"+element.option3+"</button>";
-                    str += "<button value='"+element.option4+"'>"+element.option4+"</button>";
-                });
-                $(".content").html(str);
-            }
-        })
+                  "level": $('#level').val()
+                }),
+                success: function(data) {
+                    var str = "";
+                    data.questions.forEach(element => {
+                        str += "<div class='tab'>";
+                        str += "<p>"+element.question+"</p>";
+                        str += "<button value='"+element.option1+"'>"+element.option1+"</button>";
+                        str += "<button value='"+element.option2+"'>"+element.option2+"</button>";
+                        str += "<button value='"+element.option3+"'>"+element.option3+"</button>";
+                        str += "<button value='"+element.option4+"'>"+element.option4+"</button>";
+                        str += "</div>";
+                    });
+                    $( "#questions" ).append( str );
+                    showTab(currentTab);
+                }
+            })
     })
     </script>
 </body>
